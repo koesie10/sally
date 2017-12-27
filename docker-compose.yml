@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  sally:
+    image: koesie10/sally:latest
+    ports:
+      - "8080:8080"
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 200M
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - /opt/docker/sally/sally.yaml:/sally/sally.yaml
